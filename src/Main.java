@@ -10,6 +10,5 @@ public class Main {
         System.out.println(Anna);
         System.out.println(Kate);
         System.out.println(Artem);
-
     }
 }

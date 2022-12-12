@@ -3,16 +3,36 @@ import java.util.Objects;
 
 public class Human {
 
-    String name;
-    String town;
-    String jobTitle;
-    int yearOfBirth;
+    public String name;
+    public String town;
+    public String jobTitle;
+    public int yearOfBirth;
 
     public Human(String name, int yearOfBirth, String town, String jobTitle) {
-        this.name = name;
-        this.yearOfBirth = yearOfBirth;
-        this.town = town ;
-        this.jobTitle = jobTitle;
+
+        if (name != null && !name.isEmpty() && !name.isBlank()) {
+            this.name = name;
+        } else {
+            this.name = "Информация не указана";
+        }
+
+        if (yearOfBirth >= 0) {
+            this.yearOfBirth = yearOfBirth;
+        } else {
+            this.yearOfBirth = 0;
+        }
+
+        if (town != null && !town.isEmpty() && !town.isBlank()) {
+            this.town = town;
+        } else {
+            this.town = "Информация не указана";
+        }
+
+        if (jobTitle != null && !jobTitle.isEmpty() && !jobTitle.isBlank()) {
+            this.jobTitle = jobTitle;
+        } else {
+            this.jobTitle = "Информация не указана";
+        }
     }
 
     @Override
@@ -23,7 +43,6 @@ public class Human {
                 " году. Я работаю на должности " + jobTitle +
                 ". Будем знакомы!";
     }
-
     public String getName() {
         return name;
     }
@@ -51,11 +70,13 @@ public class Human {
         if (this == o) return true;
         if (!(o instanceof Human)) return false;
         Human human = (Human) o;
-        return yearOfBirth == human.yearOfBirth && Objects.equals(name, human.name) && Objects.equals(town, human.town) && Objects.equals(jobTitle, human.jobTitle);
+        return yearOfBirth == human.yearOfBirth &&
+                Objects.equals(name, human.name) &&
+                Objects.equals(town, human.town) &&
+                Objects.equals(jobTitle, human.jobTitle);
     }
     @Override
     public int hashCode() {
         return Objects.hash(name, town, jobTitle, yearOfBirth);
     }
-
 }
