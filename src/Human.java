@@ -4,9 +4,9 @@ import java.util.Objects;
 public class Human {
 
     public String name;
-    public String town;
+    private String town;
     public String jobTitle;
-    public int yearOfBirth;
+    private final int yearOfBirth;
 
     public Human(String name, int yearOfBirth, String town, String jobTitle) {
 
@@ -56,11 +56,20 @@ public class Human {
         return yearOfBirth;
     }
     public void setName(String name) {
-        this.name = name;
+        if (name != null && !name.isEmpty() && !name.isBlank()) {
+            this.name = name;
+        } else {
+            this.name = "Информация не указана";
+        }
     }
     public void setTown(String town) {
-        this.town = town;
+        if (town != null && !town.isEmpty() && !town.isBlank()) {
+            this.town = town;
+        } else {
+            this.town = "Информация не указана";
+        }
     }
+
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
